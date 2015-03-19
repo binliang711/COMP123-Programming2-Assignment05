@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * studentName:Bin Liang | studentNumber:300788322
+ * Date last Modified:March 19th,2015
+ * Program description:COMP123_Assignment05,Array Practice-Airline Reservations System.
+ * Revision	History:
+ * 1.Finish: a+b requirements of assignment.
+ * 2.Finish c,d basic requirement
+ * 3.Debugging successfully.
+ * 
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +20,7 @@ namespace COMP123_Programming2_Assignment05
     class Program
     {
         static void Main(string[] args)
-        {
-            
-
+        {       
             MainMenu();
         }
 
@@ -65,34 +73,36 @@ namespace COMP123_Programming2_Assignment05
         {
             string appDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
             string pathName = appDir;
-            string fileName = "Grade.txt";
+            string fileName = "\\Data\\Grade.txt";
             string delimeter = " ";
-            ReadFileMethod(pathName, fileName, delimeter);
 
             string prompt;
             Console.Write("Please enter a file name: ");
 
             try
             {
-                prompt = Console.ReadLine();
+                prompt = Console.ReadLine();//Here, enter Grade.txt
                 Console.WriteLine();
-                File.Open(pathName + fileName, FileMode.Open);
-
                 if (File.Exists(prompt))
                 {
                     Console.WriteLine("The File Exists");
                     Console.WriteLine();
                     ReadFileMethod(pathName, fileName, delimeter);
                 }
-                //else
-                //{
-                //    Console.WriteLine("The file does not exist");
-                //}
+                else
+                {
+                    File.Open("prompt", FileMode.Open);;
+                }
             }
-            catch (IOException)
+            catch (FileNotFoundException error2)
             {
-                Console.WriteLine("The File does not exist");
-                //Console.WriteLine(error2.Message);
+                Console.WriteLine("The file does not exist");
+                Console.WriteLine(error2.Message);
+            }
+            catch (IOException error3)
+            {
+                Console.WriteLine("The file can't be opened");
+                Console.WriteLine(error3.Message);
             }
             
             WaitForKey();
@@ -121,7 +131,6 @@ namespace COMP123_Programming2_Assignment05
             {
                 Console.WriteLine("Your code caused a darn error!!!");
                 Console.WriteLine("Error: {0} ", error.Message);
-
             }
         }
 
@@ -130,7 +139,7 @@ namespace COMP123_Programming2_Assignment05
         {
             Console.WriteLine();
             Console.WriteLine("++++++++++++++++++++++++++++++++++");
-            Console.WriteLine("Press any key to continue...");
+            Console.WriteLine("+++Press any key to continue...+++");
             Console.WriteLine("++++++++++++++++++++++++++++++++++");
             Console.ReadKey();
             Console.Clear();
