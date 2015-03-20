@@ -6,7 +6,7 @@
  * 1.Finish: a+b requirements of assignment.
  * 2.Finish c,d basic requirement
  * 3.Debugging successfully.
- * 
+ * 4.Improve comments.
  */
 using System;
 using System.Collections.Generic;
@@ -71,9 +71,9 @@ namespace COMP123_Programming2_Assignment05
 
         private static void CheckFile()
         {
-            string appDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            string appDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;//use it to get path of the file.
             string pathName = appDir;
-            string fileName = "\\Data\\Grade.txt";
+            string fileName = "\\Data\\Grade.txt";//file is in Data folder.
             string delimeter = " ";
 
             string prompt;
@@ -81,7 +81,7 @@ namespace COMP123_Programming2_Assignment05
 
             try
             {
-                prompt = Console.ReadLine();//Here, enter Grade.txt
+                prompt = Console.ReadLine();//Here, enter Grade.txt can check if condition;enter others to check else condition.
                 Console.WriteLine();
                 if (File.Exists(prompt))
                 {
@@ -91,15 +91,15 @@ namespace COMP123_Programming2_Assignment05
                 }
                 else
                 {
-                    File.Open("prompt", FileMode.Open);;
+                    File.Open("prompt", FileMode.Open);//use this code to catch following exceptions.
                 }
             }
-            catch (FileNotFoundException error2)
+            catch (FileNotFoundException error2)//check whether the file is exist.
             {
                 Console.WriteLine("The file does not exist");
                 Console.WriteLine(error2.Message);
             }
-            catch (IOException error3)
+            catch (IOException error3)//check whether the file can be opened.
             {
                 Console.WriteLine("The file can't be opened");
                 Console.WriteLine(error3.Message);
@@ -108,6 +108,7 @@ namespace COMP123_Programming2_Assignment05
             WaitForKey();
         }
 
+        //use this method to load student data into a string array.
         private static void ReadFileMethod(string pathName, string fileName, string delimeter)
         {
             string fileData = "";
